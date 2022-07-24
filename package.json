@@ -28,8 +28,10 @@
   },
   "scripts": {
     "build": "npx tsc",
-    "start": "nodemon src/index.ts --delay 3000ms",
-    "test": "npm run build && jasmine",
+    "start": "node ./dist/index.js",
+    "test": "jasmine",
+    "devstart": "nodemon src/index.ts --delay 3000ms",
+    "devtest": "npm run build && jasmine",
     "prettier": "prettier --config \"./.prettierrc\" --write \"**.js\"",
     "lint": "eslint \"dist/**.js\""
   },

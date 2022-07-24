@@ -36,10 +36,10 @@ describe('Tesing utilities', () => __awaiter(void 0, void 0, void 0, function* (
             }));
         }));
         describe('Testing function with thumb Folder', () => __awaiter(void 0, void 0, void 0, function* () {
-            it('should return the filepath for dragon2_150_150_1_180 because dragon2_150_150_1_180.png is exist on thumb folder', () => __awaiter(void 0, void 0, void 0, function* () {
+            it('should return the filepath for dragon2_150_150_1_180 because dragon2_80_80_3_12.png is exist on thumb folder', () => __awaiter(void 0, void 0, void 0, function* () {
                 // no matter capital or extension
-                const expectedPath = path_1.default.resolve('images/thumb', 'dragon2_150_150_1_180.png'); // dynamic get path of dragon2.png file in thumb folder
-                const functionReturnPath = yield files_1.default.getFileByName('images/thumb', 'dragon2_150_150_1_180');
+                const expectedPath = path_1.default.resolve('images/thumb', 'dragon2_80_80_3_12.png'); // dynamic get path of dragon2.png file in thumb folder
+                const functionReturnPath = yield files_1.default.getFileByName('images/thumb', 'dragon2_80_80_3_12');
                 expect(functionReturnPath).toEqual(expectedPath);
             }));
         }));
