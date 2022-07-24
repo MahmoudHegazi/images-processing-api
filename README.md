@@ -18,7 +18,7 @@ first you place your images inside full directory and visit /api/images and prov
 `/api/images?filename=myimage&width=150&height=150`
 
 # endpoints
-#### / root endpoint
+#### 
 this redirect to API endpoint and do not do thing in the app.
 
 #### /api endpoint
@@ -27,6 +27,21 @@ this display message about the api and the options can set
 #### /images endpoint
 this is the main endpoint and accepts 5 query parameters
 
+1. **/ root endpoint**
+   Add the dependencies required for this project, including Express, TypeScript, Jasmine, Eslint, and Prettier. Complete your package.json file.
+   - Where should your dependencies be placed?
+   - What scripts should you create to take advantage of the dependencies you've added?
+   - Are there other dependencies you would like to add or know you will need to improve your workflow?
+2. **/api endpoint**
+   You have quite a few dependencies that all need to work together. Sometimes it's easiest to write some simple js functions to test that all of your dependencies work together before you begin adding any functionality.
+3. **Configure your middleware and dependencies.**
+   Create folders and files for what you anticipate you will need for the project.
+   - How do you plan to keep your source code and build code separately?
+   - Where will you keep your tests?
+   - How do you plan to name your routes? Utilities?   
+   
+   
+   
 
 For this project, refactor and test as much as possible while you are building. Since you are using TypeScript and an unfamiliar library, it is sometimes easier to write and build in plain JS to see what your functions return; remember your submission needs to be in TypeScript. As your skills improve, typing in TypeScript will feel more intuitive. Make sure to remove any debugging code from your final submission.
 
