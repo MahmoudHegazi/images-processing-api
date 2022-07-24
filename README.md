@@ -50,9 +50,8 @@ first you place your images inside full directory and visit /api/images and prov
    - 3: The third middleware first checks if the file is cached in the thumb folder if so it sets locals.cached to true
    - 4: The fourth middleware it first checks if the locals.cached is set to true and proceeds to the callback otherwise it will handle a new processing request, it confirms that the file name is in a full folder and if the file does not exist, it returns a 404 error and terminates the operations and request.
    -
-=======
-   -
    - 5: Last middleware: This is the last middleware that uses sharps to process the image, skips the request if the image is cached, and uses the same file naming order used in the cached file validation step (both will result in the same file name)
+=======
    - finally is the callback for the root and it consider error less function never request will come to it with error or missing data, and it check if file cached it display the cached file using the path set in third middleware, incase this is new request which detected in last middleware it will respond with the new created file  
   # tests:
    Includes 15 tests written in **jasmine** that cover all API endpoints, middleware, and utilities, ensuring that the API works flawlessly and as expected
