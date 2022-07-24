@@ -33,12 +33,11 @@ this is the main endpoint and accepts 5 query parameters
    - accepts 5 query parameters
    - Parameters: [filename: string, width: number, height: number, blur: number, rotate: number]
    - this endpoint uses 5 logical ordered middlewares as a chain which include validate request and processing image (must called in the same order described)
-   -       .1: validate first required parameters and return error for all missing paramters at once
-   -       .2: as now required paramters exist, second validate type of each paramter and return error for all invalid type and mention right type. also validate optional prameters
-   -       .3: third middleware first it check if file is cached in thumb folder if so it set locals.cached to true (by doing this will skip next middleware also this middle ware not expected to return errors
-   -       .4: fourth middleware it check first if cached set true and continue to callback else it will deal as a new processing request, what it does , it confirm the filename exist in full folder and incase file not exist return 404 error and terminate the processs and request.
-   -       .5: last middleware: this is final middleware which uses sharp to process the image also it skip request if image cached by checking the `res.locals.cache` then it create the new image inside the thumb dir, also it uses the same order used in check chached image (both will result in same filename)
-   -       
+   - 1: validate first required parameters and return error for all missing paramters at once
+   - 2: as now required paramters exist, second validate type of each paramter and return error for all invalid type and mention right type. also validate optional prameters
+   - 3: third middleware first it check if file is cached in thumb folder if so it set locals.cached to true (by doing this will skip next middleware also this middle ware not expected to return errors
+   - 4: fourth middleware it check first if cached set true and continue to callback else it will deal as a new processing request, what it does , it confirm the filename exist in full folder and incase file not exist return 404 error and terminate the processs and request.
+   - 5: last middleware: this is final middleware which uses sharp to process the image also it skip request if image cached by checking the `res.locals.cache` then it create the new image inside the thumb dir, also it uses the same order used in check chached image (both will result in same filename)    
    - finally is the callback for the root and it consider error less function never request will come to it with error or missing data, and it check if file cached it display the cached file using the path set in third middleware, incase this is new request which detected in last middleware it will respond with the new created file  
    
    
