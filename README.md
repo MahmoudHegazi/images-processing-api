@@ -3,6 +3,14 @@
 # What Is that:
 this is image processing API created in Node.js and TypeScript can be used to resize your image also to add blur effect or rotate the image.
 
+# how it works
+first you place your images inside full directory and visit /api/images and provide parameters for requiest to make effect on images eg
+=======
+first you place your images inside full directory and visit /api/images and provide parameters for requiest to make effect on images eg 
+>>>>>>> 081329c605b8be25385cab95b5a19b0a84c09b03
+`/api/images?filename=myimage&width=150&height=150`
+
+
 # Languages, frameworks and libraries:
 1. JavaScript
 2. Node.js
@@ -13,13 +21,6 @@ this is image processing API created in Node.js and TypeScript can be used to re
 7. lint
 8. prettier
 
-# how it works
-<<<<<<< HEAD
-first you place your images inside full directory and visit /api/images and provide parameters for requiest to make effect on images eg
-=======
-first you place your images inside full directory and visit /api/images and provide parameters for requiest to make effect on images eg 
->>>>>>> 081329c605b8be25385cab95b5a19b0a84c09b03
-`/api/images?filename=myimage&width=150&height=150`
 
 
 # scripts
