@@ -1,7 +1,6 @@
 import express from 'express';
 import files from '../utilities/files';
 
-
 const validate_cachedFile = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> =>{
   let strName: string = ((req.query.filename as unknown) as string).trim().toLowerCase();
   let strWidth: string = ((req.query.width as unknown) as string).trim().toLowerCase();
@@ -25,7 +24,6 @@ const validate_cachedFile = async (req: express.Request, res: express.Response, 
   if (fileCached){
     res.locals.cached = true;
     res.locals.imageThumbPath = fileCached;
-    console.log('Middleware 3 check in thumb', fileCached);
   }
   next();
 };
@@ -42,11 +40,11 @@ const validate_file_existince = async (req: express.Request, res: express.Respon
     if (fileExistInFull){
       res.locals.cached = false;
       res.locals.imageFullPath = fileExistInFull;
-      console.log('Midle ware 4 Chick In Full', fileExistInFull);
       next();
     } else {
-      res.send('can not find file in full folders / thumb folders ').status(404).end();
-      return;
+      res.setHeader('Content-Type', 'application/json');
+              res.statusCode = 404;
+              res.end(JSON.stringify('requested file is not found'));
     }
   }
 

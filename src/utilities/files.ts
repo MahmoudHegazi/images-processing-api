@@ -7,17 +7,7 @@ interface asyncResult {
   error?: string
 }
 
-// this function get the filename parameter and search for image in full folder
-async function readByName(filename: string): Promise<asyncResult>{
-  const finalFileName: string = filename.split('.')[0].toLowerCase().trim();
-  const filepath = path.resolve('utilities', '..', 'src', '..', 'images', 'full', finalFileName);
-  try {
-    const fileString = await fsPromises.readFile(filepath, 'utf-8');
-    return {success: true};
-  } catch (err) {
-    return {success: false, error: ((err as unknown) as string)};
-  }
-}
+
 // this function get the dirname and filename with or without extension also with capital or small and return the full file path if this file exist or false if not exist
 async function getFileByName(dirname: string, fname: string): Promise<string>{
   const filename =  fname.trim().split('.')[0].toLowerCase(); // get filename only
@@ -56,21 +46,29 @@ async function createNewFile(filepath: string, content: string|Buffer): Promise<
 }
 
 
-// note this generator ignore if the optional parameter not exist and return the name (also it ignore 0 any falsy)
-function getThumbFilePath(ext: string, ...vars:(string|number|undefined)[]){
+// note this generator ignore if the optional parameter not exist and return the name (also it ignore 0 or any falsy) eg images?filename=dragon2&width=150&height=150&blur=0 is dragon2_150_150 with no blur cus it 0 this cache both in one
+function getThumbFilePath(ext: string, ...vars:(string|number|undefined)[]): string{
   let newFileName: string = '';
   vars.forEach( (nameVar: unknown, index: number)=>{
     if (nameVar){
-      console.log(nameVar, String((nameVar as unknown) as string).trim().toLowerCase());
       newFileName += String((nameVar as unknown) as string).trim().toLowerCase();
       newFileName += '_';
     }
   });
-  const filepath = path.resolve('images/thumb', newFileName.slice(0,newFileName.length-1) + '.' + ext);
+  const filepath: string = path.resolve('images/thumb', newFileName.slice(0,newFileName.length-1) + '.' + ext);
   return filepath;
 }
 
+const isFileExist = async (fpath: string): Promise<boolean> => {
+  const filePath = path.resolve(fpath);
+  console.log(filePath)
+  try {
+    const myFile = await fsPromises.open(filePath, 'r');
+    return true;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+}
 
-
-
-export default {getFileByName, createNewFile, getThumbFilePath};
+export default {getFileByName, createNewFile, getThumbFilePath, isFileExist};

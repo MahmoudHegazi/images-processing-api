@@ -29,7 +29,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "nodemon src/index.ts --delay 3000ms",
-    "test": "jasmine",
+    "test": "npm run build && jasmine",
     "prettier": "prettier --config \"./.prettierrc\" --write \"**.js\"",
     "lint": "eslint \"dist/**.js\""
   },

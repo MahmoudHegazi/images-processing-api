@@ -25,7 +25,10 @@ const required_validator = (req: express.Request, res: express.Response, next: e
     }
   }
   if (error){
-    res.send(`one or more required parameters are missing: ${missingParms.join(",")}`).status(400).end();
+    //res.send(`one or more required parameters are missing: ${missingParms.join(",")}`).status(400).end();
+    res.setHeader('Content-Type', 'application/json');
+            res.statusCode = 400;
+            res.end(JSON.stringify(`one or more required parameters are missing: ${missingParms.join(",")}`));
   } else {
     next();
   }
@@ -80,8 +83,10 @@ const type_validator = (req: express.Request, res: express.Response, next: expre
 
 
   if (error){
-    res.send(`one or more parameters have invalid types: ${invalidTypes.join(",")}`);
-    return;
+    //res.send(`one or more parameters have invalid types: ${invalidTypes.join(",")}`);
+    res.setHeader('Content-Type', 'application/json');
+            res.statusCode = 400;
+            res.end(JSON.stringify(`one or more parameters have invalid types: ${invalidTypes.join(",")}`));
   } else {
     next();
   }
