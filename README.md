@@ -49,7 +49,25 @@ first you place your images inside full directory and visit /api/images and prov
    - 
    - 5: Last middleware: This is the last middleware that uses sharps to process the image, skips the request if the image is cached, and uses the same file naming order used in the cached file validation step (both will result in the same file name)
    - finally is the callback for the root and it consider error less function never request will come to it with error or missing data, and it check if file cached it display the cached file using the path set in third middleware, incase this is new request which detected in last middleware it will respond with the new created file  
-   
+  # tests:
+   Includes 15 tests written in **jasmine** that cover all API endpoints, middleware, and utilities, ensuring that the API works flawlessly and as expected
+  
+  ### important note for tests
+  keep this image dragon2_80_80_3_12.png in thumb directory this to confirm the method getting the file from thumb is working
+  
+  
+  # screenshoots:
+  ![image](https://user-images.githubusercontent.com/55125302/180635302-da7d1ab0-8e89-428d-8f3f-0a0bc859b868.png)
+
+  ![image](https://user-images.githubusercontent.com/55125302/180635310-5fb8b146-6b82-4dc0-b609-83e546b51569.png)
+
+  ![image](https://user-images.githubusercontent.com/55125302/180635331-77df2b5c-137e-4a2c-9e59-1722fda72738.png)
+
+  ![image](https://user-images.githubusercontent.com/55125302/180635339-55fb455d-2ee6-4281-8d2a-403e2dedf202.png)
+
+  ![image](https://user-images.githubusercontent.com/55125302/180635471-9d253021-5648-48ef-8b59-740fa0410b8a.png)
+
+  
   # Author:
   Mahmoud Hegazy
   
