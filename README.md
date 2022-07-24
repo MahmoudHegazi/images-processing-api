@@ -4,9 +4,8 @@
 this is image processing API created in Node.js and TypeScript can be used to resize your image also to add blur effect or rotate the image.
 
 # how it works
-first you place your images inside full directory and visit /api/images and provide parameters for requiest to make effect on images eg
+first you place your images inside full directory and visit /api/images and provide parameters for request to make effect on images eg
 =======
-first you place your images inside full directory and visit /api/images and provide parameters for requiest to make effect on images eg 
 `/api/images?filename=myimage&width=150&height=150`
 
 
