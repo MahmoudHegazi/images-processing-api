@@ -2,17 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 // Middleware 1
 // this middle ware to validate the required parameters
-const required_validator = (req, res, next) => {
-    const missingParms = [];
-    let error = false;
-    const parms = {
+var required_validator = function (req, res, next) {
+    var missingParms = [];
+    var error = false;
+    var parms = {
         filename: req.query.filename,
         width: req.query.width,
         height: req.query.height
     };
     // add all the undefined query parameters name to missingParms list
-    for (const parm in parms) {
-        const parmValue = parms[parm];
+    for (var parm in parms) {
+        var parmValue = parms[parm];
         if (!parmValue) {
             error = true;
             missingParms.push(parm);
@@ -22,19 +22,20 @@ const required_validator = (req, res, next) => {
         //res.send(`one or more required parameters are missing: ${missingParms.join(",")}`).status(400).end();
         res.setHeader('Content-Type', 'application/json');
         res.statusCode = 400;
-        res.end(JSON.stringify(`one or more required parameters are missing: ${missingParms.join(",")}`));
+        res.end(JSON.stringify("one or more required parameters are missing: ".concat(missingParms.join(','))));
     }
     else {
         next();
     }
 };
 // Middleware 2 (Run after middleware 1) (validaite type s of query parameters filename is string and size parms are numbers)
-const type_validator = (req, res, next) => {
-    const invalidTypes = [];
-    let error = false;
-    const filename = (typeof (req.query.filename) === 'string');
-    const valid_width = !isNaN(parseInt(req.query.width));
-    const valid_height = !isNaN(parseInt(req.query.height));
+var type_validator = function (req, res, next) {
+    var invalidTypes = [];
+    var error = false;
+    var filename = (typeof req.query.filename ===
+        'string');
+    var valid_width = !isNaN(parseInt(req.query.width));
+    var valid_height = !isNaN(parseInt(req.query.height));
     //var re2 = new RegExp('/^f/');
     //var r  = 'file'.match(re2);
     if (!filename) {
@@ -52,7 +53,7 @@ const type_validator = (req, res, next) => {
     // add any new optional or required params and check them is easy
     // check optional params
     if (req.query.blur) {
-        const blurCHeck = !isNaN(parseInt(req.query.blur.trim()));
+        var blurCHeck = !isNaN(parseInt(req.query.blur.trim()));
         if (!blurCHeck) {
             invalidTypes.push('blur: number');
             error = true;
@@ -64,7 +65,7 @@ const type_validator = (req, res, next) => {
     }
     // check optional params (Only allow true in rotate)
     if (req.query.rotate) {
-        const rotateCheck = !isNaN(parseInt(req.query.rotate.trim()));
+        var rotateCheck = !isNaN(parseInt(req.query.rotate.trim()));
         if (!rotateCheck) {
             invalidTypes.push('rotate: number');
             error = true;
@@ -77,10 +78,10 @@ const type_validator = (req, res, next) => {
         //res.send(`one or more parameters have invalid types: ${invalidTypes.join(",")}`);
         res.setHeader('Content-Type', 'application/json');
         res.statusCode = 400;
-        res.end(JSON.stringify(`one or more parameters have invalid types: ${invalidTypes.join(",")}`));
+        res.end(JSON.stringify("one or more parameters have invalid types: ".concat(invalidTypes.join(','))));
     }
     else {
         next();
     }
 };
-exports.default = { required_validator, type_validator };
+exports.default = { required_validator: required_validator, type_validator: type_validator };
