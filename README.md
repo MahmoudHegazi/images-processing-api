@@ -20,6 +20,9 @@ first you place your images inside full directory and visit /api/images and prov
 8. prettier
 
 
+# working endpoint !!!
+API /api return status 200, also /health return status 200
+
 
 # scripts
 1. npm install [to install the all packages]!
