@@ -20,8 +20,9 @@ first you place your images inside full directory and visit /api/images and prov
 8. prettier
 
 
-# working endpoint !!!
-API /api return status 200, also /health return status 200
+# working endpoints !!!
+/api return status 200 always
+/health return response with status 200 always and json object include health boolean to determine the health of all API endpoint after perform some tests 
 
 
 # scripts
@@ -36,10 +37,13 @@ API /api return status 200, also /health return status 200
 
 
 # endpoints
-
 1. **/ root endpoint**
    - takes no parameters.
-   - this redirect to API endpoint and do not do thing in the app.
+   - this return response Hello From Image-processing-api root endpoint, and always have status 200!
+2  **/health endpoint**
+   - takes no parameters
+   - this return always response with status 200 and this is working endpoint and return health status after make tests on all endpoint of API using node-fetch
+   - can used in microservices app to report health of this component and all of it's endpoint with valid test
 2. **/api endpoint**
    - takes no parameters.
    - this display message about the api and the options can set.
