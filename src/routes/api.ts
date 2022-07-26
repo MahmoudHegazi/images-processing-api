@@ -4,7 +4,8 @@ import imagesRouter from './api/images';
 const apiRouter = Router();
 apiRouter.use('/images', imagesRouter);
 
-apiRouter.get('/', (req, res) => {
+// workign endpoint (this always return 200)
+apiRouter.get('/', (_req, res): void => {
   res.setHeader('Content-Type', 'application/json');
   res
     .send(

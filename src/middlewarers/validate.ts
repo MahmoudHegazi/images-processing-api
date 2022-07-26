@@ -1,10 +1,10 @@
 import express from 'express';
-
-interface imageParms {
+// use type instead of interface
+type imageParms = {
   filename: string;
   width: number | string;
   height: number | string;
-}
+};
 
 // page have type return
 // Middleware 1
@@ -15,7 +15,7 @@ const required_validator = (
   next: express.NextFunction
 ): void => {
   const missingParms: string[] = [];
-  let error: boolean = false;
+  let error = false;
   const parms: imageParms = {
     filename: req.query.filename as unknown as string,
     width: req.query.width as unknown as number,
@@ -50,7 +50,7 @@ const type_validator = (
   next: express.NextFunction
 ): void => {
   const invalidTypes: string[] = [];
-  let error: boolean = false;
+  let error = false;
   const filename = ((typeof req.query.filename as unknown as string) ===
     'string') as boolean;
   const valid_width = !isNaN(

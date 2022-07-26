@@ -1,12 +1,5 @@
 import { promises as fsPromises } from 'fs';
 import path from 'path';
-import fs from 'fs';
-
-// please show me which function has missing type return
-interface asyncResult {
-  success: boolean;
-  error?: string;
-}
 
 // this function get the dirname and filename with or without extension also with capital or small and return the full file path if this file exist or false if not exist
 async function getFileByName(dirname: string, fname: string): Promise<string> {
@@ -47,7 +40,7 @@ async function createNewFile(
 ): Promise<boolean> {
   const filePath: string = path.resolve(filepath);
   try {
-    const newFile = await fsPromises.writeFile(filePath, content);
+    await fsPromises.writeFile(filePath, content);
     return true;
   } catch {
     return false;
@@ -59,8 +52,8 @@ function getThumbFilePath(
   ext: string,
   ...vars: (string | number | undefined)[]
 ): string {
-  let newFileName: string = '';
-  vars.forEach((nameVar: unknown, index: number) => {
+  let newFileName = '';
+  vars.forEach((nameVar: unknown) => {
     if (nameVar) {
       newFileName += String(nameVar as unknown as string)
         .trim()
@@ -79,7 +72,7 @@ const isFileExist = async (fpath: string): Promise<boolean> => {
   const filePath = path.resolve(fpath);
   console.log(filePath);
   try {
-    const myFile = await fsPromises.open(filePath, 'r');
+    await fsPromises.open(filePath, 'r');
     return true;
   } catch (error) {
     console.log(error);

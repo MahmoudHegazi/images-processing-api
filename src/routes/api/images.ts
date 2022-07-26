@@ -19,7 +19,7 @@ imageRouter.use(
 imageRouter.use(process_image);
 
 // this callback is finall one error free (res.locals.cached means the image already exist) (res.locals.processd_image: new image created)
-imageRouter.get('/', (req, res): void => {
+imageRouter.get('/', (_req, res): void => {
   if (res.locals.cached) {
     console.log('cached Served First'); // this comment to guide about cahche and new processed image
     res.sendFile(res.locals.imageThumbPath);

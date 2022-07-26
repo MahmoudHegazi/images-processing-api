@@ -3,11 +3,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var validate_1 = __importDefault(require("../../middlewarers/validate"));
-var express_1 = require("express");
-var file_validate_1 = __importDefault(require("../../middlewarers/file_validate"));
-var image_processer_1 = __importDefault(require("../../middlewarers/image_processer"));
-var imageRouter = (0, express_1.Router)();
+const validate_1 = __importDefault(require("../../middlewarers/validate"));
+const express_1 = require("express");
+const file_validate_1 = __importDefault(require("../../middlewarers/file_validate"));
+const image_processer_1 = __importDefault(require("../../middlewarers/image_processer"));
+const imageRouter = (0, express_1.Router)();
 /* This is final step reached with all errors handled in middlewares */
 // this to validate the required query parameters are exist and types of each one and return error for each parm has issue
 imageRouter.use([validate_1.default.required_validator, validate_1.default.type_validator]);
@@ -16,7 +16,7 @@ imageRouter.use(file_validate_1.default.validate_cachedFile, file_validate_1.def
 // use the process_image midle ware to create new images and set res.locals.processd_image or end the request incase of errors blockchain small
 imageRouter.use(image_processer_1.default);
 // this callback is finall one error free (res.locals.cached means the image already exist) (res.locals.processd_image: new image created)
-imageRouter.get('/', function (req, res) {
+imageRouter.get('/', (_req, res) => {
     if (res.locals.cached) {
         console.log('cached Served First'); // this comment to guide about cahche and new processed image
         res.sendFile(res.locals.imageThumbPath);

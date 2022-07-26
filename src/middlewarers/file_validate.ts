@@ -1,22 +1,22 @@
 import express from 'express';
 import files from '../utilities/files';
-// page have type return 
+// page have type return
 const validate_cachedFile = async (
   req: express.Request,
   res: express.Response,
   next: express.NextFunction
 ): Promise<void> => {
-  let strName: string = (req.query.filename as unknown as string)
+  const strName: string = (req.query.filename as unknown as string)
     .trim()
     .toLowerCase();
-  let strWidth: string = (req.query.width as unknown as string)
+  const strWidth: string = (req.query.width as unknown as string)
     .trim()
     .toLowerCase();
-  let strHeight: string = (req.query.height as unknown as string)
+  const strHeight: string = (req.query.height as unknown as string)
     .trim()
     .toLowerCase();
   // create name first with required parms
-  let cached_name: string = `${strName}_${strWidth}_${strHeight}`;
+  let cached_name = `${strName}_${strWidth}_${strHeight}`;
 
   // add the optional params to name if set in previous middleware (same order when called getThumbFilePath )
   if (res.locals.blur) {

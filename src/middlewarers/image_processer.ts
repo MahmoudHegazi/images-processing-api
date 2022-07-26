@@ -1,7 +1,7 @@
 import express from 'express';
 import files from '../utilities/files';
 import sharp from 'sharp';
-// page have type return 
+// page have type return
 const process_image = async (
   req: express.Request,
   res: express.Response,
@@ -40,8 +40,7 @@ const process_image = async (
         res.locals.blur,
         res.locals.rotate
       );
-      //const newImagePath = path.resolve(newFilename);
-      const newProcessedImage = await files.createNewFile(newFilePath, buffer);
+      await files.createNewFile(newFilePath, buffer);
       res.locals.processd_image = newFilePath;
       next();
     } catch (err) {
