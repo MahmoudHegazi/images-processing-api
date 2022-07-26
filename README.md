@@ -83,6 +83,10 @@ first you place your images inside full directory and visit /api/images and prov
 
   ![image](https://user-images.githubusercontent.com/55125302/180635471-9d253021-5648-48ef-8b59-740fa0410b8a.png)
 
+  ![image](https://user-images.githubusercontent.com/55125302/180931287-67741bc8-87b4-4187-86f8-52764b5f2712.png)
+  
+  ![image](https://user-images.githubusercontent.com/55125302/180931354-1c60fe41-e8a4-4df3-84e9-6e9818ae34c1.png)
+
 
   # Author:
   Mahmoud Hegazy
