@@ -89,9 +89,6 @@ first you place your images inside full directory and visit /api/images and prov
   ![image](https://user-images.githubusercontent.com/55125302/180931287-67741bc8-87b4-4187-86f8-52764b5f2712.png)
 
 
-  # Author:
-  Mahmoud Hegazy
-
 =======
   
   # Author:
